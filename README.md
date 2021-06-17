@@ -9,3 +9,4 @@ $ go install -v github.com/paul-nelson-baker/go-git-plumbing/...
 ## Commands
 
 - [git root](./cmd/git-root)
+- [git exec](./cmd/git-exec)
