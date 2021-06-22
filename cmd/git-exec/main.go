@@ -3,20 +3,12 @@ package main
 import (
 	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/paul-nelson-baker/go-git-plumbing/internal/utils"
 )
 
 func main() {
-	// get the git project root directory
-	gitRootCmd := exec.Command("git", "root")
-	gitRootOutputBytes, err := gitRootCmd.Output()
-	if err != nil {
-		_, _ = os.Stderr.Write(gitRootOutputBytes)
-		os.Exit(1)
-	}
-	gitRootDirectory := strings.TrimSpace(string(gitRootOutputBytes))
+	gitProjectRootDirectory := utils.MustGitProjectRootDirectory()
 	// find out if an executable command is actually present
 	commandIndex := utils.IndexOfStringInSlice("--", os.Args...)
 	if commandIndex < 0 {
@@ -35,7 +27,7 @@ func main() {
 	executableCmd.Stdin = os.Stdin
 	executableCmd.Stdout = os.Stdout
 	executableCmd.Stderr = os.Stderr
-	executableCmd.Dir = gitRootDirectory
+	executableCmd.Dir = gitProjectRootDirectory
 	if err := executableCmd.Run(); err != nil {
 		os.Exit(1)
 	}

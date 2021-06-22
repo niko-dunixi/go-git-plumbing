@@ -10,3 +10,4 @@ $ go install -v github.com/paul-nelson-baker/go-git-plumbing/...
 
 - [git root](./cmd/git-root)
 - [git exec](./cmd/git-exec)
+- [git pre-commit](./cmd/git-pre-commit)
