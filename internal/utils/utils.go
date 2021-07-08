@@ -27,3 +27,23 @@ func MustGitProjectRootDirectory() string {
 	}
 	return strings.TrimSpace(stdOutBuffer.String())
 }
+
+func MustLazyRunCmd(command string, args ...string) {
+	if err := LazyRunCmd(command, args...); err != nil {
+		os.Exit(1)
+	}
+}
+
+func LazyRunCmd(command string, args ...string) error {
+	cmd := exec.Command(command, args...)
+	cmd.Dir = MustGitProjectRootDirectory()
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	DebugPrintCmd(cmd)
+	return cmd.Run()
+}
+
+func DebugPrintCmd(cmd *exec.Cmd) {
+	os.Stdout.WriteString("$ " + strings.Join(cmd.Args, " ") + "\n")
+}
