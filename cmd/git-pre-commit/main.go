@@ -45,7 +45,7 @@ func main() {
 		utils.MustLazyRunCmd("pre-commit", args...)
 	// recursive execution cases
 	case "run":
-		utils.MustLazyRunCmd("git", "pre-commit", "exec", "--", "run")
+		utils.MustLazyRunCmd("git", "pre-commit", "exec", "--", "run", "--all-files")
 	case "install":
 		utils.MustLazyRunCmd("git", "pre-commit", "exec", "--", "install", "--install-hooks")
 	case "update":
