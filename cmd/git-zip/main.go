@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/paul-nelson-baker/go-git-plumbing/internal/utils"
+	"github.com/niko-dunixi/go-git-plumbing/internal/utils"
 )
 
 func main() {
