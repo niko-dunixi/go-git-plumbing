@@ -3,7 +3,7 @@
 Some simple commands that utilize git's plumbing model to expand additional functionality.
 
 ```bash
-$ go get -v github.com/paul-nelson-baker/go-git-plumbing/...
+$ go install github.com/niko-dunixi/go-git-plumbing/...@latest
 ```
 
 ## Commands
